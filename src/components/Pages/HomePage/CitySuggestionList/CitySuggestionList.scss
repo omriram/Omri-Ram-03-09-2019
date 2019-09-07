@@ -1,0 +1,11 @@
+.city-list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 0 1rem 1rem rgba(#000, .1);
+ 
+    width: 50%;
+    max-height: 19rem;
+    overflow: auto;
+}

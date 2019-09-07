@@ -1,0 +1,15 @@
+.favorites-page {
+    opacity: 0;
+    visibility: hidden;
+    padding: 3rem 5rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__empty {
+        opacity: 0;
+        visibility: hidden;
+        font-size: 4rem;
+        color: #fff;
+        margin: 4rem auto;
+    }
+}

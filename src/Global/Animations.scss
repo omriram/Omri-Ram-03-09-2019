@@ -1,0 +1,160 @@
+@keyframes inputFieldEntrance {
+    0% {
+        transform: translateX(15rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+  
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+@keyframes favoritesEntrance {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: translateY(5rem) scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        transform: translateY(5rem) scale(1.1);
+        box-shadow: 0 1rem 2rem rgba(#000, .1);
+    }
+  
+    100% {
+        transform: translateY(5rem) scale(1);
+        box-shadow: none;
+    }
+}
+
+
+@keyframes clickPulsate {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity:.4;
+        transform: scale(1.2);
+    }
+  
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+
+
+
+@keyframes detailsEntrance {
+    0% {
+    }
+  
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes announcement {
+    0% {
+        transform: translateY(-5rem);
+    }
+  
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+@keyframes forecastCardEntrance {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translateY(10rem);
+    }
+  
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+
+.forecastCardEntrance {
+    animation-name: forecastCardEntrance;
+    animation-duration: .6s;
+    animation-fill-mode: forwards;
+
+    &:nth-child(1) {
+        animation-delay: .5s;
+    }
+    &:nth-child(2) {
+        animation-delay: .6s;
+    }
+    &:nth-child(3) {
+        animation-delay: .7s;
+    }
+    &:nth-child(4) {
+        animation-delay: .8s;
+    }
+    &:nth-child(5) {
+        animation-delay: .9s;
+    }
+   
+}
+
+.favoritesEntrance {
+    animation-name: favoritesEntrance;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+}
+
+.clickPulsate {
+    animation-name: clickPulsate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+
+.inputFieldEntrance {
+    animation-name: inputFieldEntrance;
+    animation-duration: .7s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+.announcement {
+    animation-name: announcement;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.detailsEntrance {
+    animation-name: detailsEntrance;
+    animation-duration: .5s;
+    animation-delay: .2s;
+    animation-fill-mode: forwards;
+}

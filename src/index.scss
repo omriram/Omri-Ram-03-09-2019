@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:root {
+    --color-primary: #1145bf;
+    --color-primary-light: #567acc;
+    --color-primary-dark: #082871;
+
+    --color-third: #3f6fd6;
+
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;   
+}

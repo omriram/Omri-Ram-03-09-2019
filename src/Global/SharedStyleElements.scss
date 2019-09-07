@@ -1,0 +1,78 @@
+@import "./Animations.scss";
+
+.heading-primary {
+    font-family: inherit;
+    font-size: 3rem;
+    letter-spacing: 1px;
+}
+
+.input-text {
+    border: none;
+    font-family: inherit;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 3px;
+    font-weight: 700;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.icon {
+    position: relative;
+    height: 1.65rem;
+    width: 1.65rem;
+    z-index: 100;
+    cursor: pointer;
+    transition: all .2s;
+    fill: #5279f8;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 1rem 2rem rgba(#000, .1);
+        fill: rgb(46, 46, 46);
+    }
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+
+.btn {
+    font-family: inherit;
+    border: none;
+    padding: 1rem;
+    font-size: 1.7rem;
+    background-color: transparent;
+    cursor: pointer;
+
+    &-disabled {
+        background-color: lightgrey;
+        cursor: auto;
+        border-radius: 3px;
+    }
+
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.card {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 3px;
+    background-image: linear-gradient(to right, rgb(46, 184, 248), rgb(24, 142, 238));
+    color: #fff;
+}
+
+.clicked {
+    background-color: rgb(214, 214, 214);
+}
+
+.apikeyexc {
+    margin-top: 4rem;
+    font-size: 4rem;
+    color: #fff;
+}

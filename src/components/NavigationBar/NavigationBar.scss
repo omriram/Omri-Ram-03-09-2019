@@ -1,0 +1,27 @@
+.nav-bar {
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    opacity: .9;
+
+    &__topic {
+        margin-right: auto;
+        margin-left: 1rem;
+        color: #335674;
+    }
+
+    &__btn {
+        align-self: stretch;
+
+        &:hover {
+            background-color: rgb(155, 153, 153);
+        }
+
+        &:active {
+            background-color: rgb(94, 94, 94);
+        }
+    }
+}
+
