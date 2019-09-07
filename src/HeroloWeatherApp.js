@@ -54,7 +54,7 @@ class HeroloWeatherApp extends Component {
         }
       })
       .catch(err => {
-        console.log("Api key exceeded");
+        console.log("Some problem has been occurred");
       });
     this.setState({ inputField: event.target.value });
   };
