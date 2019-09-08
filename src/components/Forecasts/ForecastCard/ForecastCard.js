@@ -8,7 +8,7 @@ import { ReactComponent as Clouds } from "./Assets/clouds.svg";
 import { ReactComponent as Sun } from "./Assets/sun.svg";
 import "./ForecastCard.scss";
 
-const ForecastCard = ({ day, minTemp, maxTemp, iconPhrase }) => {
+const ForecastCard = ({ day, maxTemp, iconPhrase }) => {
   let weatherIcon;
   const iconPhraseCopy = iconPhrase.toLowerCase();
 
@@ -36,9 +36,7 @@ const ForecastCard = ({ day, minTemp, maxTemp, iconPhrase }) => {
       <div className="forecast-card__day">{day}</div>
       <div className="forecast-card__phrase">{iconPhrase}</div>
       {weatherIcon}
-      <div className="forecast-card__temp">
-        {minTemp} - {maxTemp} &#8451;{" "}
-      </div>
+      <div className="forecast-card__temp">{maxTemp} &#8451; </div>
     </div>
   );
 };

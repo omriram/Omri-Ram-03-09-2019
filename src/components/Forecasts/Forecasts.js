@@ -13,7 +13,6 @@ const Forecasts = ({ forecastList }) => {
           <ForecastCard
             key={dayConditions.Date}
             day={days[(currentDay + index) % 7]}
-            minTemp={dayConditions.Temperature.Minimum.Value}
             maxTemp={dayConditions.Temperature.Maximum.Value}
             iconPhrase={dayConditions.Day.IconPhrase}
           />
