@@ -21,7 +21,8 @@ class HeroloWeatherApp extends Component {
       showCityList: false,
       currentPage: "home",
       favoriteCities: [],
-      cityToForecast: {}
+      cityToForecast: {},
+      apikeyExceeded: false
     };
   }
 
@@ -33,6 +34,10 @@ class HeroloWeatherApp extends Component {
     const cityDataCopy = Object.assign(cityData);
 
     this.setState({ showCity: cityDataCopy });
+  };
+
+  onNoMoreApiCallsForToday = () => {
+    this.setState({ apikeyExceeded: true });
   };
 
   onInputChange = event => {
@@ -122,6 +127,7 @@ class HeroloWeatherApp extends Component {
             showCityList={this.state.showCityList}
             onSetCityOnDetailsSection={this.onSetCityOnDetailsSection}
             showCity={this.state.showCity}
+            onNoMoreApiCallsForToday={this.onNoMoreApiCallsForToday}
           />
         );
         break;
@@ -143,14 +149,20 @@ class HeroloWeatherApp extends Component {
 
   render() {
     const returnedComponent = this.pageStateManager();
-
     return (
       <div className="herolo-weather-app">
         <NavigationBar
           onChangePage={this.onChangePage}
           page={this.state.currentPage}
+          apikeyExceeded={this.state.apikeyExceeded}
         />
-        {returnedComponent}
+        {this.state.apikeyExceeded === true ? (
+          <div className="apikeyexc announcement">
+            Sorry, no more api calls for today :)
+          </div>
+        ) : (
+          returnedComponent
+        )}
       </div>
     );
   }

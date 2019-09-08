@@ -2,7 +2,7 @@ import React from "react";
 import "../../Global/SharedStyleElements.scss";
 import "./NavigationBar.scss";
 
-const NavigationBar = ({ onChangePage, page }) => {
+const NavigationBar = ({ apikeyExceeded, onChangePage, page }) => {
   let homeButtonClass, favoritesButtonClass;
   if (page === "favorites") {
     favoritesButtonClass = "btn nav-bar__btn clicked";
@@ -14,15 +14,23 @@ const NavigationBar = ({ onChangePage, page }) => {
   return (
     <nav className="nav-bar">
       <div className="heading-primary nav-bar__topic">Herolo Weather Task</div>
-      <button onClick={() => onChangePage("home")} className={homeButtonClass}>
-        Home
-      </button>
-      <button
-        onClick={() => onChangePage("favorites")}
-        className={favoritesButtonClass}
-      >
-        Favorites
-      </button>
+      {apikeyExceeded ===
+        false /* if my api calls run out the site becomes unavailable */ && (
+        <React.Fragment>
+          <button
+            onClick={() => onChangePage("home")}
+            className={homeButtonClass}
+          >
+            Home
+          </button>
+          <button
+            onClick={() => onChangePage("favorites")}
+            className={favoritesButtonClass}
+          >
+            Favorites
+          </button>
+        </React.Fragment>
+      )}
     </nav>
   );
 };

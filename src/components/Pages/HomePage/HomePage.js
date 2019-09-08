@@ -27,7 +27,6 @@ class HomePage extends Component {
       DailyForecasts: []
     },
     isInFavorites: false,
-    apikeyExceeded: false,
     loading: false
   };
 
@@ -43,7 +42,7 @@ class HomePage extends Component {
       .then(data => {
         if (data.Code !== undefined) {
           if (data.Code === "ServiceUnavailable") {
-            this.setState({ apikeyExceeded: true });
+            this.props.onNoMoreApiCallsForToday();
           }
         } else {
           const forecastListCopy = Object.assign(data);
@@ -70,7 +69,7 @@ class HomePage extends Component {
       .then(data => {
         if (data.Code !== undefined) {
           if (data.Code === "ServiceUnavailable") {
-            this.setState({ apikeyExceeded: true });
+            this.props.onNoMoreApiCallsForToday();
           }
         } else {
           const cityCurrentConditionsCardCopy = Object.assign(data);
@@ -120,77 +119,66 @@ class HomePage extends Component {
 
     return (
       <div className="home-page">
-        {this.state.apikeyExceeded ? (
-          <div className="apikeyexc announcement">
-            Sorry, no more api calls for today :)
+        <div className="home-page__group inputFieldEntrance u-margin-bottom-medium">
+          <div className="home-page__group-holder">
+            <input
+              className="home-page__input input-text"
+              type="text"
+              placeholder="Enter your location"
+              onChange={this.props.onInputChange}
+              value={this.props.inputField}
+            />
+            <div className={clickIndicationClass}>Click</div>
+            <button className="btn" onClick={this.onSearchButtonClick}>
+              <SearchIcon className="icon" />
+            </button>
           </div>
-        ) : (
-          <React.Fragment>
-            <div className="home-page__group inputFieldEntrance u-margin-bottom-medium">
-              <div className="home-page__group-holder">
-                <input
-                  className="home-page__input input-text"
-                  type="text"
-                  placeholder="Enter your location"
-                  onChange={this.props.onInputChange}
-                  value={this.props.inputField}
-                />
-                <div className={clickIndicationClass}>Click</div>
-                <button className="btn" onClick={this.onSearchButtonClick}>
-                  <SearchIcon className="icon" />
-                </button>
-              </div>
-              {this.props.showCityList === true && (
-                <CitySuggestionList
-                  inputField={this.props.inputField}
-                  onCityClick={this.props.onCityClick}
-                  cityList={this.props.cityList}
-                />
-              )}
+          {this.props.showCityList === true && (
+            <CitySuggestionList
+              inputField={this.props.inputField}
+              onCityClick={this.props.onCityClick}
+              cityList={this.props.cityList}
+            />
+          )}
+        </div>
+        <div className="details detailsEntrance">
+          {this.state.loading && (
+            <LoadingBars
+              className="loading-bars"
+              type={"bars"}
+              color={"#5279f8"}
+            />
+          )}
+          <div className="details__top-section u-margin-bottom-medium">
+            <CurrentConditionsCard
+              currentTemp={
+                this.state.cityCurrentConditionsCard[0].Temperature.Metric.Value
+              }
+              weatherText={this.state.cityCurrentConditionsCard[0].WeatherText}
+              cityData={this.props.showCity}
+              isInFavorites={this.state.isInFavorites}
+            />
+            <button
+              className={btnFavoritesClass}
+              disabled={this.state.isInFavorites}
+              onClick={() =>
+                this.props.onAddToFavoritesButton(
+                  this.props.showCity,
+                  this.state.cityCurrentConditionsCard[0].Temperature.Metric
+                    .Value
+                )
+              }
+            >
+              Add to favorites &rarr;
+            </button>
+          </div>
+          <div className="details__bottom-section">
+            <div className="heading-primary details__bottom-section-topic u-margin-bottom-big ">
+              Weather for the next days
             </div>
-            <div className="details detailsEntrance">
-              {this.state.loading && (
-                <LoadingBars
-                  className="loading-bars"
-                  type={"bars"}
-                  color={"#5279f8"}
-                />
-              )}
-              <div className="details__top-section u-margin-bottom-medium">
-                <CurrentConditionsCard
-                  currentTemp={
-                    this.state.cityCurrentConditionsCard[0].Temperature.Metric
-                      .Value
-                  }
-                  weatherText={
-                    this.state.cityCurrentConditionsCard[0].WeatherText
-                  }
-                  cityData={this.props.showCity}
-                  isInFavorites={this.state.isInFavorites}
-                />
-                <button
-                  className={btnFavoritesClass}
-                  disabled={this.state.isInFavorites}
-                  onClick={() =>
-                    this.props.onAddToFavoritesButton(
-                      this.props.showCity,
-                      this.state.cityCurrentConditionsCard[0].Temperature.Metric
-                        .Value
-                    )
-                  }
-                >
-                  Add to favorites &rarr;
-                </button>
-              </div>
-              <div className="details__bottom-section">
-                <div className="heading-primary details__bottom-section-topic u-margin-bottom-big ">
-                  Weather for the next days
-                </div>
-                <Forecasts forecastList={this.state.forecastList} />
-              </div>
-            </div>
-          </React.Fragment>
-        )}
+            <Forecasts forecastList={this.state.forecastList} />
+          </div>
+        </div>
       </div>
     );
   }
