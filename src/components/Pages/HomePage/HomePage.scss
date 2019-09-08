@@ -12,6 +12,7 @@
         visibility: hidden;
         position: relative;
         width: 30%;
+        z-index: 10000;
 
         &-holder {
             position: relative;
@@ -38,16 +39,6 @@
             color: #1200ff;
         }
     }
-
-
-/*     opacity: .4;
-    font-weight: 700;
-    top: 7px;
-    right: -6px;
-    position: absolute;
-    width: 10rem;
-    font-size: 2rem;
-    color: #1200ff; */
 
 
 }
