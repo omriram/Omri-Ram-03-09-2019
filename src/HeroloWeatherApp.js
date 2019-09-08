@@ -54,7 +54,7 @@ class HeroloWeatherApp extends Component {
         }
       })
       .catch(err => {
-        console.log("Some problem has been occurred");
+        console.log("Some problem has occurred");
       });
     this.setState({ inputField: event.target.value });
   };
@@ -73,7 +73,6 @@ class HeroloWeatherApp extends Component {
   };
 
   onDeleteCityFavorite = cityIdToDelete => {
-    console.log(cityIdToDelete);
     const favoriteCitiesCopy = this.state.favoriteCities.filter(
       city => city.cityId !== cityIdToDelete
     );

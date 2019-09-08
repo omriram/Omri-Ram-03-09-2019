@@ -3,6 +3,7 @@ import CitySuggestionList from "./CitySuggestionList/CitySuggestionList";
 import CurrentConditionsCard from "../../CurrentConditionsCard/CurrentConditionsCard";
 import { ReactComponent as SearchIcon } from "./Assets/search.svg";
 import Forecasts from "../../Forecasts/Forecasts";
+import LoadingBars from "react-loading";
 import "../../../Global/Animations.scss";
 import "../../../Global/SharedStyleElements.scss";
 import "../../../Global/utilities.scss";
@@ -26,7 +27,8 @@ class HomePage extends Component {
       DailyForecasts: []
     },
     isInFavorites: false,
-    apikeyExceeded: false
+    apikeyExceeded: false,
+    loading: false
   };
 
   fetchForecastsData = () => {
@@ -52,9 +54,11 @@ class HomePage extends Component {
         }
       })
       .catch(err => console.log(err));
+    this.setState({ loading: false });
   };
 
   fetchCurrentConditions = (isSearchButtonClicked = false) => {
+    this.setState({ loading: true });
     fetch("https://herolo-weather-back.herokuapp.com/currentConditions", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -145,6 +149,9 @@ class HomePage extends Component {
               )}
             </div>
             <div className="details detailsEntrance">
+              {this.state.loadin && (
+                <LoadingBars type={"bars"} color={"#dc5fa6"} />
+              )}
               <div className="details__top-section u-margin-bottom-medium">
                 <CurrentConditionsCard
                   currentTemp={
