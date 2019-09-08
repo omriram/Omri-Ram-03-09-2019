@@ -30,7 +30,7 @@ class HomePage extends Component {
   };
 
   fetchForecastsData = () => {
-    fetch("http://localhost:3001/forecasts", {
+    fetch("https://herolo-weather-back.herokuapp.com/forecasts", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -55,7 +55,7 @@ class HomePage extends Component {
   };
 
   fetchCurrentConditions = (isSearchButtonClicked = false) => {
-    fetch("http://localhost:3001/currentConditions", {
+    fetch("https://herolo-weather-back.herokuapp.com/currentConditions", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

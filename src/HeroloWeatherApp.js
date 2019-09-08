@@ -36,7 +36,7 @@ class HeroloWeatherApp extends Component {
   };
 
   onInputChange = event => {
-    fetch("http://localhost:3001/autoComplete", {
+    fetch("https://herolo-weather-back.herokuapp.com/autoComplete", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
