@@ -150,7 +150,11 @@ class HomePage extends Component {
             </div>
             <div className="details detailsEntrance">
               {this.state.loadin && (
-                <LoadingBars type={"bars"} color={"#dc5fa6"} />
+                <LoadingBars
+                  className="loading-bars"
+                  type={"bars"}
+                  color={"#5279f8"}
+                />
               )}
               <div className="details__top-section u-margin-bottom-medium">
                 <CurrentConditionsCard
