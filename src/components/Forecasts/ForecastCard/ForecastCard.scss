@@ -1,8 +1,8 @@
 .forecast-card {
     opacity: 0;
     visibility: hidden;
-    width: 18rem;
-    height: 18rem;
+    width: 22rem;
+    height: 2rem;
     background-image: linear-gradient(to right, rgb(46, 184, 248), rgb(24, 142, 238));
     border-radius: 3px;
     box-shadow: 0 1rem 2rem rgba(#000, .2);
@@ -22,14 +22,14 @@
         font-size: 2.5rem;
         color: #fff;
         font-weight: 700;
-        margin-bottom: .5rem;
+        margin-bottom: 1rem;
     }
 
     &__phrase {
         font-size: 1.6rem;
         color: #fff;
         font-weight: 500;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         
     }
 
