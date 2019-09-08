@@ -54,8 +54,10 @@
         right: .7rem;
         font-size: 3rem;
         transition: all .2s;
+
         &:hover {
             transform: scale(1.4);
+            color: #5279f8;
         }
     }
 }

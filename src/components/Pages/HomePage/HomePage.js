@@ -149,7 +149,7 @@ class HomePage extends Component {
               )}
             </div>
             <div className="details detailsEntrance">
-              {this.state.loadin && (
+              {this.state.loading && (
                 <LoadingBars
                   className="loading-bars"
                   type={"bars"}
