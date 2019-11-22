@@ -16,7 +16,7 @@ class NavigationBar extends Component {
   }
 
   onInputChange = event => {
-    /* fetch("https://herolo-weather-back.herokuapp.com/autoComplete", {
+    fetch("https://herolo-weather-back.herokuapp.com/autoComplete", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -34,7 +34,7 @@ class NavigationBar extends Component {
       })
       .catch(err => {
         console.log("Some problem has occurred");
-      }); */
+      });
     this.setState({ inputField: event.target.value, showCityList: true });
   };
 
