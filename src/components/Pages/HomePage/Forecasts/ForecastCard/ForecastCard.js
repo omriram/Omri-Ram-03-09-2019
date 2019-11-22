@@ -1,6 +1,6 @@
 import React from "react";
-import "../../../Global/SharedStyleElements.scss";
-import "../../../Global/Animations.scss";
+import "../../../../../Global/SharedStyleElements.scss";
+import "../../../../../Global/Animations.scss";
 import { ReactComponent as CloudySunRain } from "./Assets/cloudy-sun-rain.svg";
 import { ReactComponent as CloudySun } from "./Assets/cloud-sun.svg";
 import { ReactComponent as Rain } from "./Assets/rain.svg";

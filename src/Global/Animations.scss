@@ -1,4 +1,4 @@
-@keyframes inputFieldEntrance {
+@keyframes topicEntance {
     0% {
         transform: translateX(15rem);
     }
@@ -141,8 +141,8 @@
 }
 
 
-.inputFieldEntrance {
-    animation-name: inputFieldEntrance;
+.topicEntance {
+    animation-name: topicEntance;
     animation-duration: .7s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;

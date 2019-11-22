@@ -1,6 +1,6 @@
 import React from "react";
-import "../../Global/SharedStyleElements.scss";
-import "../Pages/HomePage/HomePage.scss";
+import "../HomePage.scss";
+import "../../../../Global/SharedStyleElements.scss";
 import { ReactComponent as StarIcon } from "./Assets/star-full.svg";
 
 const CurrentConditionsCard = ({

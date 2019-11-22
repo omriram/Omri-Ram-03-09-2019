@@ -9,10 +9,11 @@ const FavoritesPage = ({
   onCheckForecastButton
 }) => {
   let key = 0;
+  const citiesArr = Object.keys(favoriteCities).map(key => favoriteCities[key]);
   return (
     <div className="favorites-page favoritesEntrance">
-      {favoriteCities.length > 0 ? (
-        favoriteCities.map(city => {
+      {citiesArr.length > 0 ? (
+        citiesArr.map(city => {
           return (
             <FavoriteCityCard
               key={key++}

@@ -18,7 +18,19 @@
 
 }
 
+// responsive breakpoints 
+
+$bp-largest: 75em;
+$bp-medium: 53.125em;
+
 html {
     box-sizing: border-box;
     font-size: 62.5%;   
+
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 37.5%;
+    }
 }

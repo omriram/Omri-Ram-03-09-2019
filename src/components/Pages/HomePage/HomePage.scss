@@ -7,39 +7,14 @@
     width: 100%;
     height: 100%;
 
-    &__group {
+    &__topic {
         opacity: 0;
         visibility: hidden;
-        position: relative;
-        width: 30%;
-        z-index: 10000;
-
-        &-holder {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+        color: white;
+        font-weight: 500;
+        font-family: 'Playfair Display', serif;
+        font-size: 3.25rem;
     }
-
-
-    &__input {
-        position: relative;
-        padding-right: 10rem;
-        width: 100%;
-        background-color: #fff;
-        opacity: .8;
-        margin-right: -8.5rem;
-
-
-        &-click-indication {
-            opacity: 0;
-            font-weight: 700;
-            width: 5rem;
-            font-size: 1.3rem;
-            color: #1200ff;
-        }
-    }
-
 
 }
 .details {

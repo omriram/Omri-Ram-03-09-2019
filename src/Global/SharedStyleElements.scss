@@ -32,11 +32,12 @@
     z-index: 100;
     cursor: pointer;
     transition: all .2s;
+  
     fill: #5279f8;
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 1rem 2rem rgba(#000, .1);
+ 
         fill: rgb(46, 46, 46);
     }
     &:active {

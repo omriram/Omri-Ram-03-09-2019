@@ -3,8 +3,7 @@
     height: 6rem;
     display: flex;
     align-items: center;
-    background-color: #fff;
-    opacity: .9;
+    background-color: #e7e7e7;
 
     &__topic {
         margin-right: auto;
@@ -22,6 +21,24 @@
         &:active {
             background-color: rgb(94, 94, 94);
         }
+    }
+
+    &__group {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-right: 3rem;
+        width: 30%;
+        z-index: 10000;
+    }
+
+
+    &__input {
+        position: relative;
+        padding-right: 10rem;
+        width: 100%;
+        background-color: #fff;
+        margin-right: -4.5rem; 
     }
 }
 
