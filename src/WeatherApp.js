@@ -159,7 +159,7 @@ class WeatherApp extends Component {
   fetchForecastsData = (
     chosenCity = { cityName: "Tel Aviv", cityId: "215854" }
   ) => {
-    fetch("https://herolo-weather-back.herokuapp.com/forecasts", {
+     fetch("https://herolo-weather-back.herokuapp.com/forecasts", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
