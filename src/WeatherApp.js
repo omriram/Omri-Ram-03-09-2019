@@ -2,7 +2,55 @@ import React, { Component } from "react";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import HomePage from "./components/Pages/HomePage/HomePage";
 import FavoritesPage from "./components/Pages/FavoritesPage/FavoritesPage";
+import DrawerMenu from "./components/NavigationBar/DrawerMenu/DrawerMenu";
 import "./WeatherApp.scss";
+
+/* 1234: {
+  cityId: 1234,
+  cityName: "gaga",
+  cityTemp: 15
+},
+1235: {
+  cityId: 1235,
+  cityName: "sdfdsf",
+  cityTemp: 15
+},
+1236: {
+  cityId: 1236,
+  cityName: "ssss",
+  cityTemp: 15
+},
+1237: {
+  cityId: 1237,
+  cityName: "dddd",
+  cityTemp: 15
+},
+1238: {
+  cityId: 1238,
+  cityName: "fffff",
+  cityTemp: 15
+},
+1239: {
+  cityId: 1239,
+  cityName: "gageeeea",
+  cityTemp: 15
+},
+12310: {
+  cityId: 12310,
+  cityName: "gagsdfssssa",
+  cityTemp: 15
+},
+12311: {
+  cityId: 12311,
+  cityName: "gafffsfsfga",
+  cityTemp: 15
+},
+12312: {
+  cityId: 12312,
+  cityName: "gagsfsfsfsfa",
+  cityTemp: 15
+}
+}, */
 
 class WeatherApp extends Component {
   constructor() {
@@ -32,7 +80,9 @@ class WeatherApp extends Component {
       favoriteCities: {},
       cityToForecast: {},
       apikeyExceeded: false,
-      loading: false
+      loading: false,
+      isOpenDrawer: false,
+      wrongInput: false
     };
   }
 
@@ -40,10 +90,23 @@ class WeatherApp extends Component {
     this.setState({ currentPage: page });
   };
 
-  onSearchButtonClick = chosenCity => {
-    if (Object.keys(chosenCity).length > 1) {
-      this.fetchCurrentConditions(true, chosenCity);
-      this.fetchForecastsData(chosenCity);
+  setWrongInput = flag => {
+    this.setState({ wrongInput: flag });
+  };
+
+  onSearchButtonClick = (chosenCity, inputField) => {
+    if (chosenCity.cityName !== undefined) {
+      if (chosenCity.cityName.toLowerCase() === inputField.toLowerCase()) {
+        if (Object.keys(chosenCity).length > 1) {
+          this.setWrongInput(false);
+          this.fetchCurrentConditions(true, chosenCity);
+          this.fetchForecastsData(chosenCity);
+        }
+      } else {
+        this.setWrongInput(true);
+      }
+    } else {
+      this.setWrongInput(true);
     }
   };
 
@@ -70,6 +133,10 @@ class WeatherApp extends Component {
       favoriteCities: favCitiesCpy,
       currentPage: "favorites"
     });
+  };
+
+  onClikDrawerMenu = flag => {
+    this.setState({ isOpenDrawer: flag });
   };
 
   onDeleteCityFavorite = cityIdToDelete => {
@@ -162,6 +229,10 @@ class WeatherApp extends Component {
             showCity={this.state.showCity}
             favoriteCities={this.state.favoriteCities}
             onAddToFavoritesButton={this.onAddToFavoritesButton}
+            onSearchButtonClick={this.onSearchButtonClick}
+            onClikDrawerMenu={this.onClikDrawerMenu}
+            wrongInput={this.state.wrongInput}
+            setWrongInput={this.setWrongInput}
           />
         );
         break;
@@ -171,6 +242,7 @@ class WeatherApp extends Component {
             favoriteCities={this.state.favoriteCities}
             onDeleteCityFavorite={this.onDeleteCityFavorite}
             onCheckForecastButton={this.onCheckForecastButton}
+            onClikDrawerMenu={this.onClikDrawerMenu}
           />
         );
         break;
@@ -195,7 +267,13 @@ class WeatherApp extends Component {
           onSearchButtonClick={this.onSearchButtonClick}
           page={this.state.currentPage}
           apikeyExceeded={this.state.apikeyExceeded}
+          onClikDrawerMenu={this.onClikDrawerMenu}
+          wrongInput={this.state.wrongInput}
+          setWrongInput={this.setWrongInput}
         />
+        {this.state.isOpenDrawer && (
+          <DrawerMenu onChangePage={this.onChangePage} />
+        )}
         {this.state.apikeyExceeded === true ? (
           <div className="apikeyexc announcement">
             Sorry, no more api calls for today :)

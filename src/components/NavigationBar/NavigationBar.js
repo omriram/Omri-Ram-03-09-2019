@@ -1,60 +1,16 @@
 import React, { Component } from "react";
-import CitySuggestionList from "./CitySuggestionList/CitySuggestionList";
+import DrawerMenuButton from "./DrawerMenu/DrawerMenuButton/DrawerMenuButton";
+import SearchField from "../SearchField/SearchField";
 import "../../Global/SharedStyleElements.scss";
 import "./NavigationBar.scss";
-import { ReactComponent as SearchIcon } from "./Assets/search.svg";
 
 class NavigationBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputField: "",
-      showCityList: false,
-      cityList: [],
-      chosenCity: {}
+      isInMobileMode: false
     };
   }
-
-  onInputChange = event => {
-    fetch("https://herolo-weather-back.herokuapp.com/autoComplete", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        inputField: event.target.value
-      })
-    })
-      .then(Response => Response.json())
-      .then(data => {
-        if (data[0].LocalizedName !== undefined) {
-          this.setState({
-            cityList: data,
-            showCityList: true
-          });
-        }
-      })
-      .catch(err => {
-        console.log("Some problem has occurred");
-      });
-    this.setState({ inputField: event.target.value, showCityList: true });
-  };
-
-  onKeyDown = event => {
-    if (event.keyCode === 13) {
-      this.props.onSearchButtonClick(this.state.chosenCity);
-    }
-  };
-
-  onCityClick = (cityNameinput, cityIdInput) => {
-    const chosenCity = {
-      cityName: cityNameinput,
-      cityId: cityIdInput
-    };
-    this.setState({
-      inputField: cityNameinput,
-      showCityList: false,
-      chosenCity
-    });
-  };
 
   render() {
     let homeButtonClass, favoritesButtonClass;
@@ -67,34 +23,21 @@ class NavigationBar extends Component {
     }
     return (
       <nav className="nav-bar">
+        <DrawerMenuButton
+          onClikDrawerMenu={() => this.props.onClikDrawerMenu(true)}
+        />
         <div className="heading-primary nav-bar__topic">WeatherForecast</div>
         {this.props.apikeyExceeded === false && (
           <React.Fragment>
-            <div className="nav-bar__group">
-              <input
-                className="nav-bar__input input-text"
-                type="text"
-                placeholder="Enter your location"
-                onChange={this.onInputChange}
-                onKeyDown={this.onKeyDown}
-                value={this.state.inputField}
-              />
-              <button
-                className="btn"
-                onClick={() =>
-                  this.props.onSearchButtonClick(this.state.chosenCity)
-                }
-              >
-                <SearchIcon className="icon" />
-              </button>
-              {this.state.showCityList === true && (
-                <CitySuggestionList
-                  inputField={this.state.inputField}
-                  onCityClick={this.onCityClick}
-                  cityList={this.state.cityList}
+            {this.props.page !== "favorites" && (
+              <div className="nav-bar__bp-medium">
+                <SearchField
+                  onSearchButtonClick={this.props.onSearchButtonClick}
+                  wrongInput={this.props.wrongInput}
+                  setWrongInput={this.props.setWrongInput}
                 />
-              )}
-            </div>
+              </div>
+            )}
             <button
               onClick={() => this.props.onChangePage("home")}
               className={homeButtonClass}

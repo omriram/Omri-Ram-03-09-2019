@@ -1,4 +1,6 @@
-* {
+@import "./Global/utilities.scss";
+
+*{
     padding: 0;
     margin: 0;
 }
@@ -20,17 +22,18 @@
 
 // responsive breakpoints 
 
-$bp-largest: 75em;
-$bp-medium: 53.125em;
-
+ // $bp-large <= 1200px
+ // $bp-medium <= 850 px
+ // $bp-smallest <= 500 px
+ 
 html {
     box-sizing: border-box;
     font-size: 62.5%;   
 
-    @media only screen and (max-width: $bp-largest) {
+    @media only screen and (max-width: $bp-large) {
         font-size: 50%;
     }
-    @media only screen and (max-width: $bp-medium) {
-        font-size: 37.5%;
+    @media only screen and (max-width: $bp-smallest) {
+        font-size: 62.5%;
     }
 }

@@ -6,12 +6,16 @@ import "./FavoritesPage.scss";
 const FavoritesPage = ({
   favoriteCities,
   onDeleteCityFavorite,
-  onCheckForecastButton
+  onCheckForecastButton,
+  onClikDrawerMenu
 }) => {
   let key = 0;
   const citiesArr = Object.keys(favoriteCities).map(key => favoriteCities[key]);
   return (
-    <div className="favorites-page favoritesEntrance">
+    <div
+      className="favorites-page favoritesEntrance"
+      onClick={() => onClikDrawerMenu(false)}
+    >
       {citiesArr.length > 0 ? (
         citiesArr.map(city => {
           return (

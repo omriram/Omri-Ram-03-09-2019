@@ -1,3 +1,5 @@
+@import "../../../Global/utilities.scss";
+
 .home-page {
     padding: 3rem 3rem;
     display: flex;
@@ -7,7 +9,27 @@
     width: 100%;
     height: 100%;
 
+    
+
+    &__bp-medium {
+        margin-bottom: 2rem;
+     
+        width: 60%;
+        @media only screen and (min-width: $bp-medium) {
+            display:none;
+        }
+
+        @media only screen and (max-width: $bp-smallest) {
+            width: 100%;
+        }
+    }
+
     &__topic {
+
+        @media only screen and (max-width: $bp-smallest) {
+            display: none;
+        }
+
         opacity: 0;
         visibility: hidden;
         color: white;
@@ -18,6 +40,12 @@
 
 }
 .details {
+
+    @media only screen and (max-width: $bp-smallest) {
+        height: 50%;
+    }
+
+
     position: relative;
     opacity: 0;
     visibility: hidden;
@@ -47,6 +75,13 @@
         }
 
         &-fav {
+            @media only screen and (max-width: $bp-medium) {
+               position: absolute;
+               top: 8rem;
+               left: -13.1rem;
+              
+            }
+    
             transform: translateY(7px);
             font-size: 1.3rem;
             margin-left: 1rem;
@@ -73,13 +108,24 @@
     &__top-section {
         display: flex;
         align-items: center;
+
+        @media only screen and (max-width: $bp-smallest) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &__bottom-section {
+        @media only screen and (max-width: $bp-smallest) {
+            display: none;
+        }   
+        
         display: flex;
         flex-direction: column;
         align-items: center;
         height: 30rem;
+
 
         &-topic {
             font-weight: 700;
@@ -87,6 +133,7 @@
             -webkit-background-clip: text;
             background-clip: tex;
             color: transparent;
+
         }
     }
 
@@ -99,6 +146,12 @@
     }
 
     &__btn-favorites {
+        @media only screen and (max-width: $bp-smallest) {
+            margin-top: 3rem;
+            margin-right: auto;
+            margin-bottom: -3rem;
+        }
+
         padding: 1rem 2rem;
         background-image: linear-gradient(to right, rgb(46, 184, 248), rgb(24, 142, 238));
         border-radius: 3px;
@@ -114,5 +167,21 @@
             transform: translateY(0);
             box-shadow: none;
         }
+    }
+}
+
+.mobile-view__topic {
+    @media only screen and (min-width: $bp-smallest) {
+        display: none;
+    }
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    color: #fff;
+}
+
+.mobile-view__forecast {
+    width: 100%;
+    @media only screen and (min-width: $bp-smallest) {
+        display: none;
     }
 }

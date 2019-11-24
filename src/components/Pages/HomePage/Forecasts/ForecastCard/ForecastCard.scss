@@ -1,3 +1,5 @@
+@import "../../../../../Global/utilities.scss";
+
 .forecast-card {
     opacity: 0;
     visibility: hidden;
@@ -8,6 +10,12 @@
     padding: 1rem;
     transform: translateY(10rem);
 
+    @media only screen and (max-width: $bp-smallest) {
+        width: 80%;
+        background-color: #fff;
+        background-image: initial;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +23,10 @@
  
 
     &__day {
+        @media only screen and (max-width: $bp-smallest) {
+            color: blue;
+        }
+        
         font-size: 2.5rem;
         color: #fff;
         font-weight: 700;
@@ -22,6 +34,9 @@
     }
 
     &__phrase {
+        @media only screen and (max-width: $bp-smallest) {
+            color: blue;
+        }
         font-size: 1.6rem;
         color: #fff;
         font-weight: 500;
@@ -30,12 +45,18 @@
     }
 
     &__temp {
+        @media only screen and (max-width: $bp-smallest) {
+            color: blue;
+        }
         font-size: 2rem;
         color: #fff;
         font-weight: 500;
     }
 
     &__icon {
+        @media only screen and (max-width: $bp-smallest) {
+            fill: blue;
+        }
         fill: #fff;
         margin-bottom: 3rem;
     }

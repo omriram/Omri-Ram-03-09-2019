@@ -1,4 +1,8 @@
 @import "./Animations.scss";
+@import "./utilities.scss";
+.hide {
+    display: none;
+}
 
 .heading-primary {
     font-family: inherit;
@@ -55,6 +59,13 @@
     cursor: pointer;
 
     &-disabled {
+
+        @media only screen and (max-width: $bp-smallest) {
+            margin-top: 3rem;
+            margin-right: auto;
+            margin-bottom: -3rem;
+        }
+
         background-color: lightgrey;
         cursor: auto;
         border-radius: 3px;

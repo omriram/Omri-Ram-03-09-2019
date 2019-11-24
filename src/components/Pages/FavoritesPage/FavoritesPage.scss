@@ -1,5 +1,16 @@
+@import "../../../Global/utilities.scss";
+
 .favorites-page {
+
+    @media only screen and (max-width: $bp-smallest) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+
     opacity: 0;
+    justify-content: center;
     visibility: hidden;
     padding: 3rem 5rem;
     display: flex;
